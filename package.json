@@ -1,0 +1,21 @@
+{
+  "name": "xuehanzi",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "识字 — 一个帮成年人把常用汉字认全的 web app",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "data": "python data/build_chars.py"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.2.0",
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^4.1.10"
+  }
+}
