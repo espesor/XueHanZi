@@ -1,4 +1,5 @@
 /* 识字 — 视觉见 DESIGN.md §6.4。田字格是结构母题，绿橙只表示状态，靛青是品牌色。 */
+/* 字号统一按 ~1.15 倍放大过（手机上原尺寸偏小），比例关系保持不变。 */
 
 :root {
   --paper: #f1f2ee;
@@ -126,7 +127,7 @@ body {
 .boot-error {
   margin-top: 25vh;
   color: var(--ink-3);
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   max-width: 26ch;
   line-height: 1.7;
@@ -147,6 +148,32 @@ body {
   flex-direction: column;
 }
 
+/*
+ * 手机宽度下不再把 app 显示成「悬浮在格纸背景上的卡片」——那是桌面预览时的
+ * 展示效果，实机装成 PWA 全屏运行时，卡片四周的留白和阴影只是白白占屏幕。
+ * 改成贴边撑满整个视口，.view 自己滚动（.frame 仍然 overflow:hidden，
+ * 但内容高度由 flex:1 的 .view 内部处理，不会被裁掉）。
+ */
+@media (max-width: 480px) {
+  .page {
+    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+    gap: 0;
+  }
+  .frame {
+    max-width: none;
+    min-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .view {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* ---------- 顶栏 ---------- */
 
 .brand {
@@ -158,19 +185,19 @@ body {
 }
 .brand-mark {
   font-family: var(--han);
-  font-size: 22px;
+  font-size: 25px;
   line-height: 1;
   color: var(--accent);
 }
 .brand-name {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.04em;
 }
 .brand-sub {
   margin-left: auto;
   font-family: var(--num);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--ink-3);
 }
@@ -186,7 +213,7 @@ body {
   background: none;
   cursor: pointer;
   font-family: var(--ui);
-  font-size: 15px;
+  font-size: 17px;
   color: var(--ink-2);
   padding: 13px 0 11px;
   border-bottom: 2px solid transparent;
@@ -236,13 +263,13 @@ body {
 }
 .lv-num {
   font-family: var(--num);
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 .lv-badge {
   font-family: var(--han);
-  font-size: 13px;
+  font-size: 15px;
   padding: 2px 7px;
   line-height: 1.4;
   color: var(--accent);
@@ -252,7 +279,7 @@ body {
 .lv-count {
   margin-left: auto;
   font-family: var(--num);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--ink-2);
   font-variant-numeric: tabular-nums;
 }
@@ -269,7 +296,7 @@ body {
 }
 .lv-foot {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--ink-3);
   line-height: 1.5;
 }
@@ -284,7 +311,7 @@ body {
   display: grid;
   place-items: center;
   font-family: var(--han);
-  font-size: 15px;
+  font-size: 17px;
   border: 1px dashed var(--line-strong);
   color: var(--ink-3);
   transition:
@@ -316,13 +343,13 @@ body {
   border-top: 1px dashed var(--line-strong);
 }
 .stat-lead {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--ink-2);
 }
 .stat-n {
   font-family: var(--num);
   font-weight: 700;
-  font-size: 44px;
+  font-size: 51px;
   line-height: 0.9;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
@@ -334,13 +361,13 @@ body {
   color: var(--amber);
 }
 .stat-unit {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--ink-2);
 }
 .tag {
   margin-left: auto;
-  font-size: 11px;
-  padding: 3px 8px;
+  font-size: 13px;
+  padding: 3px 9px;
   border-radius: 2px;
   border: 1px solid;
 }
@@ -366,7 +393,7 @@ body {
   appearance: none;
   cursor: pointer;
   font-family: var(--ui);
-  font-size: 16px;
+  font-size: 18px;
   padding: 15px 18px;
   border-radius: 3px;
   border: 1px solid var(--line-strong);
@@ -383,14 +410,14 @@ body {
 }
 .btn-ch {
   font-family: var(--han);
-  font-size: 19px;
+  font-size: 22px;
   color: var(--accent);
   width: 1.2em;
   text-align: center;
 }
 .btn-hint {
   margin-left: auto;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--ink-3);
 }
 .btn-wide {
@@ -426,7 +453,7 @@ body {
 
 .note {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.7;
   color: var(--ink-3);
 }
@@ -434,7 +461,7 @@ body {
   display: flex;
   gap: 14px;
   align-items: baseline;
-  font-size: 12px;
+  font-size: 14px;
   border-top: 1px dashed var(--line-strong);
   padding-top: 12px;
 }
@@ -444,7 +471,7 @@ body {
   border: 0;
   cursor: pointer;
   color: var(--accent);
-  font-size: 12px;
+  font-size: 14px;
   font-family: var(--ui);
   padding: 0;
   text-decoration: underline;
@@ -468,7 +495,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--ink-3);
   font-family: var(--num);
   font-variant-numeric: tabular-nums;
@@ -483,7 +510,7 @@ body {
 
 .grid-box {
   position: relative;
-  width: min(240px, 62vw);
+  width: min(276px, 71vw);
   aspect-ratio: 1;
   border: 1px solid var(--line-strong);
   background: var(--card);
@@ -513,7 +540,7 @@ body {
   position: relative;
   z-index: 1;
   font-family: var(--han);
-  font-size: min(144px, 38vw);
+  font-size: min(166px, 44vw);
   line-height: 1;
   color: var(--ink);
   user-select: none;
@@ -535,7 +562,7 @@ body {
 .feedback {
   margin: 0;
   min-height: 34px;
-  font-size: 13px;
+  font-size: 15px;
   text-align: center;
   line-height: 1.5;
   display: flex;
@@ -560,12 +587,12 @@ body {
   appearance: none;
   cursor: pointer;
   font-family: var(--ui);
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
-  padding: 16px 6px;
+  padding: 16px 8px;
   border-radius: 3px;
   border: 1px solid;
-  min-height: 56px;
+  min-height: 58px;
   transition:
     background 0.16s,
     transform 0.06s;
@@ -600,7 +627,7 @@ body {
   appearance: none;
   cursor: pointer;
   font-family: var(--ui);
-  font-size: 15px;
+  font-size: 17px;
   padding: 12px 6px;
   border-radius: 3px;
   border: 1px solid var(--line-strong);
@@ -638,7 +665,7 @@ body {
 }
 .summary-title {
   margin: 0;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
 }
 .sum-grid {
@@ -656,7 +683,7 @@ body {
 }
 .sum-cell b {
   font-family: var(--num);
-  font-size: 30px;
+  font-size: 35px;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
@@ -667,7 +694,7 @@ body {
   color: var(--amber);
 }
 .sum-cell span {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--ink-2);
 }
 
@@ -682,14 +709,14 @@ body {
 }
 .rev-head h2 {
   margin: 0;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
 }
 .legend {
   margin-left: auto;
   display: flex;
   gap: 12px;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--ink-2);
 }
 .legend span {
@@ -749,7 +776,7 @@ body {
   position: relative;
   z-index: 1;
   font-family: var(--han);
-  font-size: 27px;
+  font-size: 31px;
   line-height: 1;
 }
 .card-lv {
@@ -759,7 +786,7 @@ body {
   left: 4px;
   font-family: var(--num);
   font-style: normal;
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1;
   font-variant-numeric: tabular-nums;
   color: var(--ink-3);
@@ -786,7 +813,7 @@ body {
 .empty {
   text-align: center;
   color: var(--ink-3);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.8;
   padding: 36px 12px;
   border: 1px dashed var(--line-strong);
@@ -796,7 +823,7 @@ body {
 }
 .empty-big {
   font-family: var(--han);
-  font-size: 34px;
+  font-size: 39px;
   color: var(--line-strong);
   display: block;
   margin-bottom: 8px;
@@ -812,13 +839,13 @@ body {
 .pager-btn {
   appearance: none;
   cursor: pointer;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 3px;
   border: 1px solid var(--line-strong);
   background: var(--card);
   color: var(--ink);
-  font-size: 15px;
+  font-size: 17px;
 }
 .pager-btn:hover:not(:disabled) {
   border-color: var(--accent);
@@ -830,7 +857,7 @@ body {
 }
 .pager-idx {
   font-family: var(--num);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--ink-2);
   font-variant-numeric: tabular-nums;
   min-width: 5.5em;
@@ -880,13 +907,13 @@ body {
   margin-left: auto;
   appearance: none;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border: 1px solid var(--line-strong);
   background: var(--card);
   color: var(--ink-2);
   border-radius: 3px;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1;
 }
 .sheet-x:hover {
@@ -902,25 +929,25 @@ body {
 }
 .sheet-han {
   font-family: var(--han);
-  font-size: 86px;
+  font-size: 99px;
   line-height: 1;
   margin-top: -6px;
 }
 .sheet-pinyin {
   font-family: var(--num);
-  font-size: 20px;
+  font-size: 23px;
   letter-spacing: 0.06em;
   color: var(--accent);
 }
 .sheet-label {
   align-self: flex-start;
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   color: var(--ink-3);
 }
 .sheet-nowords {
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--ink-3);
   align-self: flex-start;
 }
@@ -942,11 +969,11 @@ body {
 }
 .word-w {
   font-family: var(--han);
-  font-size: 22px;
+  font-size: 25px;
 }
 .word-p {
   font-family: var(--num);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--ink-2);
   letter-spacing: 0.04em;
 }
@@ -957,7 +984,7 @@ body {
   background: none;
   border: 0;
   color: var(--ink-3);
-  font-size: 14px;
+  font-size: 16px;
   padding: 2px 4px;
 }
 .word-play:hover {
@@ -973,7 +1000,7 @@ body {
   padding: 26px 24px 24px;
 }
 .lvup-kicker {
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.2em;
   color: var(--ink-3);
 }
@@ -985,22 +1012,22 @@ body {
   border: 2px solid var(--accent);
   color: var(--accent);
   font-family: var(--han);
-  font-size: 42px;
+  font-size: 48px;
   line-height: 1;
 }
 .lvup-seal.is-num {
   font-family: var(--num);
-  font-size: 38px;
+  font-size: 44px;
   font-weight: 700;
 }
 .lvup-title {
   margin: 0;
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 600;
 }
 .lvup-desc {
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.75;
   color: var(--ink-2);
   max-width: 30ch;
@@ -1008,7 +1035,7 @@ body {
 .lvup-cover {
   font-family: var(--num);
   color: var(--green);
-  font-size: 15px;
+  font-size: 17px;
 }
 
 /* ---------- 复习选择弹窗 ---------- */
@@ -1019,7 +1046,7 @@ body {
 }
 .picker-title {
   margin: 0;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
 }
 .picker-screen {
@@ -1054,12 +1081,12 @@ body {
   background: color-mix(in srgb, var(--accent-soft) 55%, var(--card));
 }
 .level-row-num {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
 }
 .level-row-count {
   font-family: var(--num);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--ink-2);
   font-variant-numeric: tabular-nums;
 }
@@ -1097,11 +1124,11 @@ body {
 .toast {
   position: fixed;
   left: 50%;
-  bottom: 34px;
+  bottom: calc(34px + env(safe-area-inset-bottom));
   transform: translateX(-50%);
   background: var(--ink);
   color: var(--paper);
-  font-size: 14px;
+  font-size: 16px;
   padding: 11px 20px;
   border-radius: 3px;
   z-index: 70;

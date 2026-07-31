@@ -3,6 +3,7 @@ dist/
 dist-ssr/
 *.local
 .claude/settings.local.json
+.claude/*.lock
 
 # 字库原始数据：几 MB 的第三方词典，跑 npm run data 会重新下载
 data/raw/

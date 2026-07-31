@@ -5,7 +5,9 @@ import type { Store } from "../store";
 import { clear, el } from "./dom";
 import { openSheet } from "./sheet";
 
-const PAGE_SIZE = 20;
+// 手机满屏能装下的行数比 20 个（4 行）多得多；见 styles.css 里 .frame 在窄屏下
+// 撑满视口高度的规则——这两处得一起看，翻页数配的就是那个高度。
+const PAGE_SIZE = 30;
 
 export function createReviewView(store: Store) {
   let page = 0;
