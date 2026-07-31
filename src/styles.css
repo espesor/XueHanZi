@@ -18,7 +18,13 @@
   --red: #be3a2b;
   --shadow: 0 1px 0 rgb(20 27 33 / 4%), 0 8px 24px -14px rgb(20 27 33 / 35%);
 
-  --han: "Kaiti SC", "STKaiti", KaiTi, "TW-Kai", "Noto Serif CJK SC", "Songti SC", SimSun, serif;
+  /*
+   * 手机打字时用的就是这套系统黑体——不是审美选择，是可用性选择：Kaiti SC / STKaiti
+   * 这些楷体字体名基本只有 Apple 和 Windows 内置，大多数安卓手机压根没装，会一路
+   * fallback 到通用 serif，渲染出来的衬线字很难看。系统黑体保证每台手机都命中同一路人。
+   */
+  --han: "PingFang SC", "HarmonyOS Sans SC", "MiSans", "Noto Sans CJK SC", "Source Han Sans SC",
+    "Microsoft YaHei", "Droid Sans Fallback", "Hiragino Sans GB", system-ui, sans-serif;
   --ui: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", system-ui, -apple-system, "Segoe UI",
     sans-serif;
   --num: ui-monospace, "SF Mono", "JetBrains Mono", Consolas, "Courier New", monospace;
