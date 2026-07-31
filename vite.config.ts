@@ -12,8 +12,8 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,json,png,svg}"],
       },
       manifest: {
-        name: "识字 — 学汉字",
-        short_name: "识字",
+        name: "学汉字",
+        short_name: "学汉字",
         description: "从认得一些字，到能顺畅读书报。3500 常用字，按频率从易到难。",
         lang: "zh-CN",
         start_url: "./",
